@@ -2,6 +2,10 @@
 
 WordBridge 是一个 Manifest V3 Chrome 扩展。选中网页文字后，它会调用 OpenAI 兼容的聊天接口，按源语言和目标语言设置翻译或解释，并显示音标、例句、近义词和语音播放按钮。
 
+## 界面预览
+
+![WordBridge 设置界面](docs/settings.png)
+
 ## 功能
 
 - 选中网页文字后自动弹出翻译浮窗
