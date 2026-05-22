@@ -26,7 +26,9 @@ const I18N = {
     "testing": "正在测试接口...",
     "testFailed": "测试失败",
     "testOk": "测试成功：",
-    "saved": "已保存。现在可以在网页里选中文字试用。"
+    "saved": "已保存。现在可以在网页里选中文字试用。",
+    "saving": "正在保存...",
+    "autoSaved": "已自动保存。"
   },
   "zh-TW": {
     "pageTitle": "WordBridge 設定",
@@ -44,7 +46,9 @@ const I18N = {
     "testing": "正在測試 API...",
     "testFailed": "測試失敗",
     "testOk": "測試成功：",
-    "saved": "已儲存。現在可以在網頁中選取文字試用。"
+    "saved": "已儲存。現在可以在網頁中選取文字試用。",
+    "saving": "正在儲存...",
+    "autoSaved": "已自動儲存。"
   },
   "en": {
     "pageTitle": "WordBridge Settings",
@@ -62,7 +66,9 @@ const I18N = {
     "testing": "Testing API...",
     "testFailed": "Test failed",
     "testOk": "Test passed: ",
-    "saved": "Saved. Select text on a page to try it."
+    "saved": "Saved. Select text on a page to try it.",
+    "saving": "Saving...",
+    "autoSaved": "Auto-saved."
   },
   "ja": {
     "pageTitle": "WordBridge 設定",
@@ -80,7 +86,9 @@ const I18N = {
     "testing": "API をテスト中...",
     "testFailed": "テスト失敗",
     "testOk": "テスト成功: ",
-    "saved": "保存しました。ページ上の文字を選択して試せます。"
+    "saved": "保存しました。ページ上の文字を選択して試せます。",
+    "saving": "保存中...",
+    "autoSaved": "自動保存しました。"
   },
   "ko": {
     "pageTitle": "WordBridge 설정",
@@ -98,7 +106,9 @@ const I18N = {
     "testing": "API 테스트 중...",
     "testFailed": "테스트 실패",
     "testOk": "테스트 성공: ",
-    "saved": "저장했습니다. 웹페이지에서 텍스트를 선택해 보세요."
+    "saved": "저장했습니다. 웹페이지에서 텍스트를 선택해 보세요.",
+    "saving": "저장 중...",
+    "autoSaved": "자동 저장됨."
   },
   "fr": {
     "pageTitle": "Paramètres WordBridge",
@@ -116,7 +126,9 @@ const I18N = {
     "testing": "Test de l’API...",
     "testFailed": "Échec du test",
     "testOk": "Test réussi : ",
-    "saved": "Enregistré. Sélectionnez du texte sur une page pour essayer."
+    "saved": "Enregistré. Sélectionnez du texte sur une page pour essayer.",
+    "saving": "Enregistrement...",
+    "autoSaved": "Enregistré automatiquement."
   },
   "de": {
     "pageTitle": "WordBridge Einstellungen",
@@ -134,7 +146,9 @@ const I18N = {
     "testing": "API wird getestet...",
     "testFailed": "Test fehlgeschlagen",
     "testOk": "Test erfolgreich: ",
-    "saved": "Gespeichert. Markieren Sie Text auf einer Seite zum Testen."
+    "saved": "Gespeichert. Markieren Sie Text auf einer Seite zum Testen.",
+    "saving": "Wird gespeichert...",
+    "autoSaved": "Automatisch gespeichert."
   },
   "es": {
     "pageTitle": "Configuración de WordBridge",
@@ -152,7 +166,9 @@ const I18N = {
     "testing": "Probando API...",
     "testFailed": "Prueba fallida",
     "testOk": "Prueba correcta: ",
-    "saved": "Guardado. Selecciona texto en una página para probarlo."
+    "saved": "Guardado. Selecciona texto en una página para probarlo.",
+    "saving": "Guardando...",
+    "autoSaved": "Guardado automático."
   },
   "pt": {
     "pageTitle": "Configurações do WordBridge",
@@ -170,7 +186,9 @@ const I18N = {
     "testing": "Testando API...",
     "testFailed": "Teste falhou",
     "testOk": "Teste OK: ",
-    "saved": "Salvo. Selecione texto em uma página para testar."
+    "saved": "Salvo. Selecione texto em uma página para testar.",
+    "saving": "Salvando...",
+    "autoSaved": "Salvo automaticamente."
   },
   "it": {
     "pageTitle": "Impostazioni WordBridge",
@@ -188,7 +206,9 @@ const I18N = {
     "testing": "Test API...",
     "testFailed": "Test non riuscito",
     "testOk": "Test riuscito: ",
-    "saved": "Salvato. Seleziona testo in una pagina per provare."
+    "saved": "Salvato. Seleziona testo in una pagina per provare.",
+    "saving": "Salvataggio...",
+    "autoSaved": "Salvato automaticamente."
   },
   "ru": {
     "pageTitle": "Настройки WordBridge",
@@ -206,7 +226,9 @@ const I18N = {
     "testing": "Проверка API...",
     "testFailed": "Тест не пройден",
     "testOk": "Тест пройден: ",
-    "saved": "Сохранено. Выделите текст на странице, чтобы попробовать."
+    "saved": "Сохранено. Выделите текст на странице, чтобы попробовать.",
+    "saving": "Сохранение...",
+    "autoSaved": "Автосохранено."
   },
   "ar": {
     "pageTitle": "إعدادات WordBridge",
@@ -224,7 +246,9 @@ const I18N = {
     "testing": "جارٍ اختبار API...",
     "testFailed": "فشل الاختبار",
     "testOk": "نجح الاختبار: ",
-    "saved": "تم الحفظ. حدد نصًا في صفحة لتجربته."
+    "saved": "تم الحفظ. حدد نصًا في صفحة لتجربته.",
+    "saving": "جارٍ الحفظ...",
+    "autoSaved": "تم الحفظ تلقائيًا."
   },
   "hi": {
     "pageTitle": "WordBridge सेटिंग्स",
@@ -242,7 +266,9 @@ const I18N = {
     "testing": "API टेस्ट हो रहा है...",
     "testFailed": "टेस्ट विफल",
     "testOk": "टेस्ट सफल: ",
-    "saved": "सहेजा गया। आज़माने के लिए पेज पर पाठ चुनें।"
+    "saved": "सहेजा गया। आज़माने के लिए पेज पर पाठ चुनें।",
+    "saving": "सहेजा जा रहा है...",
+    "autoSaved": "अपने आप सहेजा गया।"
   },
   "vi": {
     "pageTitle": "Cài đặt WordBridge",
@@ -260,7 +286,9 @@ const I18N = {
     "testing": "Đang kiểm tra API...",
     "testFailed": "Kiểm tra thất bại",
     "testOk": "Kiểm tra thành công: ",
-    "saved": "Đã lưu. Chọn văn bản trên trang để thử."
+    "saved": "Đã lưu. Chọn văn bản trên trang để thử.",
+    "saving": "Đang lưu...",
+    "autoSaved": "Đã tự động lưu."
   },
   "th": {
     "pageTitle": "การตั้งค่า WordBridge",
@@ -278,18 +306,32 @@ const I18N = {
     "testing": "กำลังทดสอบ API...",
     "testFailed": "ทดสอบไม่สำเร็จ",
     "testOk": "ทดสอบสำเร็จ: ",
-    "saved": "บันทึกแล้ว เลือกข้อความบนหน้าเว็บเพื่อทดลองใช้"
+    "saved": "บันทึกแล้ว เลือกข้อความบนหน้าเว็บเพื่อทดลองใช้",
+    "saving": "กำลังบันทึก...",
+    "autoSaved": "บันทึกอัตโนมัติแล้ว"
   }
 };
 
 const form = document.getElementById("settings-form");
 const statusEl = document.getElementById("status");
 const testButton = document.getElementById("test-button");
+let autoSaveTimer = null;
+let isLoadingSettings = true;
 
 loadSettings();
 
 form.elements.uiLanguage.addEventListener("change", (event) => {
   applyLanguage(event.target.value);
+});
+
+form.addEventListener("input", (event) => {
+  if (!isSettingsField(event.target)) return;
+  scheduleAutoSave();
+});
+
+form.addEventListener("change", (event) => {
+  if (!isSettingsField(event.target)) return;
+  scheduleAutoSave({ immediate: true });
 });
 
 form.addEventListener("submit", async (event) => {
@@ -316,6 +358,27 @@ testButton.addEventListener("click", async () => {
   }
 });
 
+function scheduleAutoSave(options = {}) {
+  if (isLoadingSettings) return;
+
+  window.clearTimeout(autoSaveTimer);
+
+  const delay = options.immediate ? 0 : 500;
+  autoSaveTimer = window.setTimeout(async () => {
+    setStatus(t("saving"));
+    try {
+      await saveSettings({ silent: true });
+      setStatus(t("autoSaved"), "ok");
+    } catch (error) {
+      setStatus(error instanceof Error ? error.message : String(error), "error");
+    }
+  }, delay);
+}
+
+function isSettingsField(element) {
+  return Boolean(element?.name && Object.hasOwn(DEFAULT_SETTINGS, element.name));
+}
+
 async function loadSettings() {
   const saved = await chrome.storage.sync.get(Object.keys(DEFAULT_SETTINGS));
   const settings = { ...DEFAULT_SETTINGS, ...saved };
@@ -330,6 +393,8 @@ async function loadSettings() {
       field.value = value;
     }
   }
+
+  isLoadingSettings = false;
 }
 
 async function saveSettings(options = {}) {
