@@ -1,3 +1,6 @@
+const CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000;
+const CACHE_MAX_ITEMS = 300;
+
 const DEFAULT_SETTINGS = {
   enabled: true,
   baseUrl: "https://api.openai.com/v1",
@@ -123,6 +126,10 @@ async function translateSelection(text, selectionKind = "word", options = {}) {
   }
   assertApiSettings(settings);
 
+  const cacheKey = await buildCacheKey(cleanText, selectionKind, settings);
+  const cached = await readTranslationCache(cacheKey);
+  if (cached) return { ...cached, cached: true };
+
   const response = await fetch(buildEndpoint(settings.baseUrl, "chat/completions"), {
     method: "POST",
     headers: {
@@ -151,7 +158,7 @@ async function translateSelection(text, selectionKind = "word", options = {}) {
     throw new Error("The model response did not include a translation.");
   }
 
-  return {
+  const result = {
     detectedLanguage: String(parsed.detectedLanguage || "Unknown").trim(),
     translation,
     ipa: String(parsed.ipa || "").trim(),
@@ -166,6 +173,72 @@ async function translateSelection(text, selectionKind = "word", options = {}) {
       : [],
     selectionKind: selectionKind === "sentence" ? "sentence" : "word"
   };
+
+  await writeTranslationCache(cacheKey, result);
+  return result;
+}
+
+async function buildCacheKey(text, selectionKind, settings) {
+  const payload = JSON.stringify({
+    version: 1,
+    text,
+    selectionKind: selectionKind === "sentence" ? "sentence" : "word",
+    baseUrl: String(settings.baseUrl || "").trim().replace(/\/+$/, ""),
+    model: String(settings.model || "").trim(),
+    sourceLanguage: settings.sourceLanguage || "Auto detect",
+    targetLanguage: settings.targetLanguage || "English"
+  });
+
+  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(payload));
+  const hash = Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, "0")).join("");
+  return `wb-cache-${hash}`;
+}
+
+async function readTranslationCache(key) {
+  try {
+    const item = (await chrome.storage.local.get(key))[key];
+    if (!item?.value || !item?.createdAt) return null;
+
+    if (Date.now() - item.createdAt > CACHE_TTL_MS) {
+      await chrome.storage.local.remove(key);
+      return null;
+    }
+
+    return item.value;
+  } catch {
+    return null;
+  }
+}
+
+async function writeTranslationCache(key, value) {
+  try {
+    await chrome.storage.local.set({
+      [key]: {
+        createdAt: Date.now(),
+        value
+      }
+    });
+    await trimTranslationCache();
+  } catch {
+    // Cache failures should never block translation.
+  }
+}
+
+async function trimTranslationCache() {
+  const items = await chrome.storage.local.get(null);
+  const entries = Object.entries(items)
+    .filter(([key, item]) => key.startsWith("wb-cache-") && item?.createdAt)
+    .sort((a, b) => b[1].createdAt - a[1].createdAt);
+
+  const expiredKeys = entries
+    .filter(([, item]) => Date.now() - item.createdAt > CACHE_TTL_MS)
+    .map(([key]) => key);
+  const overflowKeys = entries.slice(CACHE_MAX_ITEMS).map(([key]) => key);
+  const keysToRemove = [...new Set([...expiredKeys, ...overflowKeys])];
+
+  if (keysToRemove.length) {
+    await chrome.storage.local.remove(keysToRemove);
+  }
 }
 
 async function synthesizeSpeech(text) {
