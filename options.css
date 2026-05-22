@@ -1,0 +1,250 @@
+:root {
+  color-scheme: light;
+  --ink: #17231d;
+  --muted: #536257;
+  --paper: #fbf8ee;
+  --field: #fffdf6;
+  --accent: #d6f05d;
+  --line: rgba(23, 35, 29, 0.18);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 360px;
+  margin: 0;
+  background:
+    linear-gradient(90deg, rgba(23, 35, 29, 0.04) 1px, transparent 1px),
+    linear-gradient(rgba(23, 35, 29, 0.04) 1px, transparent 1px),
+    var(--paper);
+  background-size: 22px 22px;
+  color: var(--ink);
+}
+
+.settings-shell {
+  width: min(780px, 100%);
+  margin: 0 auto;
+  padding: 14px 14px 16px;
+}
+
+.hero {
+  margin-bottom: 10px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.brand-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+
+.hero p:last-child {
+  max-width: 620px;
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.25;
+}
+
+.settings-form {
+  border: 1px solid var(--ink);
+  border-radius: 8px;
+  padding: 12px;
+  background: var(--paper);
+}
+
+label {
+  display: grid;
+}
+
+label {
+  grid-template-rows: 16px 36px;
+  gap: 4px;
+}
+
+
+.settings-form > label + label,
+.grid,
+.actions,
+.status {
+  margin-top: 10px;
+}
+
+.grid > label,
+.grid > label + label {
+  margin-top: 0;
+}
+
+
+.label-with-badge {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+}
+
+.language-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 18px;
+  border-radius: 999px;
+  padding: 0 7px;
+  background: #2f3430;
+  color: #fbf8ee;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.language-badge span {
+  color: inherit;
+  line-height: 1;
+}
+
+.language-badge span:first-child {
+  font-size: 12px;
+  font-weight: 820;
+  letter-spacing: -0.04em;
+}
+
+label span {
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 780;
+  line-height: 16px;
+}
+
+input,
+select {
+  width: 100%;
+  height: 36px;
+  border: 1px solid var(--ink);
+  border-radius: 6px;
+  background: var(--field);
+  color: var(--ink);
+  padding: 0 10px;
+  font: inherit;
+  font-size: 13px;
+  outline: none;
+}
+
+input:focus,
+select:focus {
+  outline: 2px solid rgba(214, 240, 93, 0.72);
+  outline-offset: 1px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 8px;
+}
+
+
+.switch-row {
+  display: flex;
+  align-items: center;
+  min-height: 30px;
+  margin-top: 10px;
+}
+
+.switch-label {
+  display: inline-flex;
+  grid-template-rows: none;
+  align-items: center;
+  gap: 8px;
+  min-height: 22px;
+}
+
+.switch-label input {
+  width: 16px;
+  height: 16px;
+  min-height: 16px;
+  padding: 0;
+  margin: 0;
+}
+
+.switch-label span {
+  line-height: 18px;
+}
+
+.switch-row + label {
+  margin-top: 10px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+button {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--ink);
+  cursor: pointer;
+  padding: 0 14px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 820;
+  line-height: 1;
+}
+
+button:hover {
+  background: #e0f86c;
+}
+
+button.secondary {
+  background: var(--field);
+}
+
+.status {
+  min-height: 18px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.status.is-error {
+  color: #8d281d;
+}
+
+.status.is-ok {
+  color: #255b34;
+}
+
+@media (max-width: 340px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+html[dir="rtl"] body {
+  direction: rtl;
+}
+
+html[dir="rtl"] input,
+html[dir="rtl"] select {
+  text-align: right;
+}

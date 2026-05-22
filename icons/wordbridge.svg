@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">WordBridge icon</title>
+  <desc id="desc">A clean bridge mark for WordBridge.</desc>
+  <path d="M6 110C15 48 47 13 64 13C81 13 113 48 122 110H102C94 63 73 35 64 35C55 35 34 63 26 110H6Z" fill="#d6f05d"/>
+  <path d="M31 110C39 75 57 54 64 54C71 54 89 75 97 110H83C77 88 68 73 64 73C60 73 51 88 45 110H31Z" fill="#fbf8ee"/>
+  <path d="M17 110H111" stroke="#17231d" stroke-width="12" stroke-linecap="round"/>
+</svg>
