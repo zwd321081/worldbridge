@@ -51,6 +51,15 @@
 
         <div class="trigger-grid grid">
           <label>
+            <span data-i18n="triggerMode">触发方式</span>
+            <select id="triggerMode" name="triggerMode">
+              <option value="selection" data-i18n="triggerSelection">选中后自动翻译</option>
+              <option value="modifier-selection" data-i18n="triggerModifierSelection">按住修饰键选中</option>
+              <option value="modifier-double-click" data-i18n="triggerModifierDoubleClick">按住修饰键双击</option>
+            </select>
+          </label>
+
+          <label>
             <span data-i18n="triggerModifier">修饰键</span>
             <select id="triggerModifier" name="triggerModifier">
               <option value="alt" data-i18n="modifierAlt">Alt / Option (⌥)</option>
@@ -58,15 +67,6 @@
               <option value="shift" data-i18n="modifierShift">Shift</option>
               <option value="ctrl-shift" data-i18n="modifierCtrlShift">Ctrl / Command (⌘) + Shift</option>
               <option value="alt-shift" data-i18n="modifierAltShift">Alt / Option (⌥) + Shift</option>
-            </select>
-          </label>
-
-          <label>
-            <span data-i18n="triggerMode">触发方式</span>
-            <select id="triggerMode" name="triggerMode">
-              <option value="selection" data-i18n="triggerSelection">选中后自动翻译</option>
-              <option value="modifier-selection" data-i18n="triggerModifierSelection">按住修饰键选中</option>
-              <option value="modifier-double-click" data-i18n="triggerModifierDoubleClick">按住修饰键双击</option>
             </select>
           </label>
         </div>

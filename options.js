@@ -476,6 +476,8 @@ form.elements.uiLanguage.addEventListener("change", (event) => {
   applyLanguage(event.target.value);
 });
 
+form.elements.triggerMode.addEventListener("change", updateTriggerModifierState);
+
 form.addEventListener("input", (event) => {
   if (!isSettingsField(event.target)) return;
   scheduleAutoSave();
@@ -509,6 +511,13 @@ testButton.addEventListener("click", async () => {
     testButton.disabled = false;
   }
 });
+
+function updateTriggerModifierState() {
+  const modifierField = form.elements.triggerModifier;
+  if (!modifierField) return;
+
+  modifierField.disabled = form.elements.triggerMode.value === "selection";
+}
 
 function scheduleAutoSave(options = {}) {
   if (isLoadingSettings) return;
@@ -546,6 +555,7 @@ async function loadSettings() {
     }
   }
 
+  updateTriggerModifierState();
   isLoadingSettings = false;
 }
 

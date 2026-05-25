@@ -147,6 +147,12 @@ select:focus {
   outline-offset: 1px;
 }
 
+select:disabled {
+  color: rgba(23, 35, 29, 0.42);
+  border-color: rgba(23, 35, 29, 0.18);
+  background: rgba(255, 253, 246, 0.58);
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
