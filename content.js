@@ -3,14 +3,22 @@ let selectionTimer = null;
 let activeRequest = 0;
 let currentAudio = null;
 let wordBridgeEnabled = true;
+let triggerMode = "selection";
 
 loadEnabledState();
 
 if (globalThis.chrome?.storage?.onChanged) {
   chrome.storage.onChanged.addListener((changes, areaName) => {
-    if (areaName !== "sync" || !changes.enabled) return;
-    wordBridgeEnabled = changes.enabled.newValue !== false;
-    if (!wordBridgeEnabled) closeCard();
+    if (areaName !== "sync") return;
+
+    if (changes.enabled) {
+      wordBridgeEnabled = changes.enabled.newValue !== false;
+      if (!wordBridgeEnabled) closeCard();
+    }
+
+    if (changes.triggerMode) {
+      triggerMode = normalizeTriggerMode(changes.triggerMode.newValue);
+    }
   });
 }
 
@@ -18,14 +26,16 @@ async function loadEnabledState() {
   if (!globalThis.chrome?.storage?.sync) return;
 
   try {
-    const saved = await chrome.storage.sync.get({ enabled: true });
+    const saved = await chrome.storage.sync.get({ enabled: true, triggerMode: "selection" });
     wordBridgeEnabled = saved.enabled !== false;
+    triggerMode = normalizeTriggerMode(saved.triggerMode);
     if (!wordBridgeEnabled) closeCard();
   } catch {
     wordBridgeEnabled = true;
   }
 }
 document.addEventListener("mouseup", scheduleSelectionLookup);
+document.addEventListener("dblclick", scheduleSelectionLookup);
 document.addEventListener("keyup", (event) => {
   if (event.key === "Escape") {
     closeCard();
@@ -35,7 +45,7 @@ document.addEventListener("keyup", (event) => {
 });
 
 function scheduleSelectionLookup(event) {
-  if (!wordBridgeEnabled) return;
+  if (!wordBridgeEnabled || !shouldTranslateForEvent(event)) return;
 
   const root = document.getElementById(ROOT_ID);
   if (root && event?.composedPath?.().includes(root)) return;
@@ -56,6 +66,32 @@ function scheduleSelectionLookup(event) {
     openCard({ state: "loading", source: selected, rect, selectionKind });
     requestTranslation(selected, rect, selectionKind).catch(() => {});
   }, 260);
+}
+
+function shouldTranslateForEvent(event) {
+  if (!event) return triggerMode === "selection";
+
+  if (triggerMode === "selection") {
+    return event.type !== "dblclick";
+  }
+
+  if (triggerMode === "modifier-selection") {
+    return event.type === "mouseup" && isModifierPressed(event);
+  }
+
+  if (triggerMode === "modifier-double-click") {
+    return event.type === "dblclick" && isModifierPressed(event);
+  }
+
+  return false;
+}
+
+function isModifierPressed(event) {
+  return Boolean(event?.ctrlKey || event?.metaKey);
+}
+
+function normalizeTriggerMode(value) {
+  return ["selection", "modifier-selection", "modifier-double-click"].includes(value) ? value : "selection";
 }
 
 async function requestTranslation(text, rect, selectionKind) {

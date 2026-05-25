@@ -50,6 +50,15 @@
         </div>
 
         <label>
+          <span data-i18n="triggerMode">触发方式</span>
+          <select id="triggerMode" name="triggerMode">
+            <option value="selection" data-i18n="triggerSelection">选中后自动翻译</option>
+            <option value="modifier-selection" data-i18n="triggerModifierSelection">按住 Ctrl/⌘ 选中</option>
+            <option value="modifier-double-click" data-i18n="triggerModifierDoubleClick">按住 Ctrl/⌘ 双击</option>
+          </select>
+        </label>
+
+        <label>
           <span data-i18n="apiBaseUrl">API Base URL</span>
           <input id="baseUrl" name="baseUrl" type="url" placeholder="https://api.openai.com/v1" required>
         </label>
