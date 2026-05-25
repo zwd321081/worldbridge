@@ -1,6 +1,6 @@
 const DEFAULT_SETTINGS = {
   enabled: true,
-  triggerMode: "selection",
+  triggerMode: "modifier-double-click",
   baseUrl: "https://api.openai.com/v1",
   apiKey: "",
   model: "gpt-4o-mini",

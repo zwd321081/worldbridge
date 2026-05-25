@@ -3,7 +3,7 @@ let selectionTimer = null;
 let activeRequest = 0;
 let currentAudio = null;
 let wordBridgeEnabled = true;
-let triggerMode = "selection";
+let triggerMode = "modifier-double-click";
 
 loadEnabledState();
 
@@ -26,7 +26,7 @@ async function loadEnabledState() {
   if (!globalThis.chrome?.storage?.sync) return;
 
   try {
-    const saved = await chrome.storage.sync.get({ enabled: true, triggerMode: "selection" });
+    const saved = await chrome.storage.sync.get({ enabled: true, triggerMode: "modifier-double-click" });
     wordBridgeEnabled = saved.enabled !== false;
     triggerMode = normalizeTriggerMode(saved.triggerMode);
     if (!wordBridgeEnabled) closeCard();
@@ -91,7 +91,7 @@ function isModifierPressed(event) {
 }
 
 function normalizeTriggerMode(value) {
-  return ["selection", "modifier-selection", "modifier-double-click"].includes(value) ? value : "selection";
+  return ["selection", "modifier-selection", "modifier-double-click"].includes(value) ? value : "modifier-double-click";
 }
 
 async function requestTranslation(text, rect, selectionKind) {
