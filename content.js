@@ -4,6 +4,7 @@ let activeRequest = 0;
 let currentAudio = null;
 let wordBridgeEnabled = true;
 let triggerMode = "modifier-double-click";
+let triggerModifier = "alt";
 
 loadEnabledState();
 
@@ -19,6 +20,10 @@ if (globalThis.chrome?.storage?.onChanged) {
     if (changes.triggerMode) {
       triggerMode = normalizeTriggerMode(changes.triggerMode.newValue);
     }
+
+    if (changes.triggerModifier) {
+      triggerModifier = normalizeTriggerModifier(changes.triggerModifier.newValue);
+    }
   });
 }
 
@@ -26,9 +31,10 @@ async function loadEnabledState() {
   if (!globalThis.chrome?.storage?.sync) return;
 
   try {
-    const saved = await chrome.storage.sync.get({ enabled: true, triggerMode: "modifier-double-click" });
+    const saved = await chrome.storage.sync.get({ enabled: true, triggerMode: "modifier-double-click", triggerModifier: "alt" });
     wordBridgeEnabled = saved.enabled !== false;
     triggerMode = normalizeTriggerMode(saved.triggerMode);
+    triggerModifier = normalizeTriggerModifier(saved.triggerModifier);
     if (!wordBridgeEnabled) closeCard();
   } catch {
     wordBridgeEnabled = true;
@@ -87,7 +93,19 @@ function shouldTranslateForEvent(event) {
 }
 
 function isModifierPressed(event) {
-  return Boolean(event?.ctrlKey || event?.metaKey);
+  if (!event) return false;
+
+  if (triggerModifier === "ctrl") return Boolean(event.ctrlKey || event.metaKey);
+  if (triggerModifier === "alt") return Boolean(event.altKey);
+  if (triggerModifier === "shift") return Boolean(event.shiftKey);
+  if (triggerModifier === "ctrl-shift") return Boolean((event.ctrlKey || event.metaKey) && event.shiftKey);
+  if (triggerModifier === "alt-shift") return Boolean(event.altKey && event.shiftKey);
+
+  return false;
+}
+
+function normalizeTriggerModifier(value) {
+  return ["ctrl", "alt", "shift", "ctrl-shift", "alt-shift"].includes(value) ? value : "alt";
 }
 
 function normalizeTriggerMode(value) {
