@@ -157,6 +157,11 @@ select:disabled {
   gap: 7px;
 }
 
+.trigger-grid {
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  gap: 6px;
+}
+
 .switch-row {
   display: flex;
   align-items: center;
@@ -240,6 +245,9 @@ button.secondary {
     grid-template-columns: 1fr;
   }
 
+  .trigger-grid {
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  }
 }
 
 html[dir="rtl"] body {
