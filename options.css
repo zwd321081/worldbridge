@@ -162,6 +162,11 @@ select:disabled {
   gap: 6px;
 }
 
+.language-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 7px;
+}
+
 .switch-row {
   display: flex;
   align-items: center;
@@ -247,6 +252,10 @@ button.secondary {
 
   .trigger-grid {
     grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  }
+
+  .language-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
 }
 
