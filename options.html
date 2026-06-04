@@ -72,6 +72,14 @@
         </div>
 
         <label>
+          <span data-i18n="closeBehavior">浮层关闭</span>
+          <select id="closeBehavior" name="closeBehavior">
+            <option value="mouseleave" data-i18n="closeOnMouseLeave">鼠标移出后关闭</option>
+            <option value="manual" data-i18n="closeManual">只点 X 关闭</option>
+          </select>
+        </label>
+
+        <label>
           <span data-i18n="apiBaseUrl">API Base URL</span>
           <input id="baseUrl" name="baseUrl" type="url" placeholder="https://api.openai.com/v1" required>
         </label>

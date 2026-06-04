@@ -5,6 +5,7 @@ const DEFAULT_SETTINGS = {
   enabled: true,
   triggerMode: "modifier-double-click",
   triggerModifier: "alt",
+  closeBehavior: "mouseleave",
   baseUrl: "https://api.openai.com/v1",
   apiKey: "",
   model: "gpt-4o-mini",

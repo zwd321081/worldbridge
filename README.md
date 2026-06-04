@@ -14,6 +14,7 @@ WordBridge 是一个 Manifest V3 Chrome 扩展。选中网页文字后，它会�
 - 可在设置页启用或禁用选词翻译
 - 设置改动会自动保存，也可手动点击保存设置
 - 默认按住 Alt / Option (⌥) 双击触发翻译，也可自定义触发动作和修饰键
+- 可配置浮层关闭方式：鼠标移出关闭或只点 X 关闭
 - 设置页支持简中、繁中、英文、日文、韩文、法文、德文、西文、葡文、意文、俄文、阿语、印地语、越南语、泰语界面
 - 可配置源语言和目标语言，源语言支持自动识别
 - 英文到英文时会用简单英文解释
@@ -65,6 +66,7 @@ WordBridge is a Manifest V3 Chrome extension. When you select text on a webpage,
 - Can enable or disable selection lookup from the settings page
 - Settings changes are auto-saved, with a manual Save button still available
 - Default trigger is holding Alt / Option (⌥) and double-clicking; users can customize the trigger action and modifier key
+- Configurable popup close behavior: close on mouse leave or only close with X
 - Settings UI supports Simplified Chinese, Traditional Chinese, English, Japanese, Korean, French, German, Spanish, Portuguese, Italian, Russian, Arabic, Hindi, Vietnamese, and Thai
 - Configurable source and target languages, with auto-detection for the source language
 - Explains English in simple English when translating English to English

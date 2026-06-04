@@ -5,6 +5,7 @@ let currentAudio = null;
 let wordBridgeEnabled = true;
 let triggerMode = "modifier-double-click";
 let triggerModifier = "alt";
+let closeBehavior = "mouseleave";
 
 loadEnabledState();
 
@@ -24,6 +25,10 @@ if (globalThis.chrome?.storage?.onChanged) {
     if (changes.triggerModifier) {
       triggerModifier = normalizeTriggerModifier(changes.triggerModifier.newValue);
     }
+
+    if (changes.closeBehavior) {
+      closeBehavior = normalizeCloseBehavior(changes.closeBehavior.newValue);
+    }
   });
 }
 
@@ -31,10 +36,11 @@ async function loadEnabledState() {
   if (!globalThis.chrome?.storage?.sync) return;
 
   try {
-    const saved = await chrome.storage.sync.get({ enabled: true, triggerMode: "modifier-double-click", triggerModifier: "alt" });
+    const saved = await chrome.storage.sync.get({ enabled: true, triggerMode: "modifier-double-click", triggerModifier: "alt", closeBehavior: "mouseleave" });
     wordBridgeEnabled = saved.enabled !== false;
     triggerMode = normalizeTriggerMode(saved.triggerMode);
     triggerModifier = normalizeTriggerModifier(saved.triggerModifier);
+    closeBehavior = normalizeCloseBehavior(saved.closeBehavior);
     if (!wordBridgeEnabled) closeCard();
   } catch {
     wordBridgeEnabled = true;
@@ -112,6 +118,10 @@ function normalizeTriggerMode(value) {
   return ["selection", "modifier-selection", "modifier-double-click"].includes(value) ? value : "modifier-double-click";
 }
 
+function normalizeCloseBehavior(value) {
+  return ["mouseleave", "manual"].includes(value) ? value : "mouseleave";
+}
+
 async function requestTranslation(text, rect, selectionKind) {
   const requestId = ++activeRequest;
   let response;
@@ -163,6 +173,10 @@ function openCard(model) {
 
   const closeButton = shadow.querySelector("[data-action='close']");
   closeButton?.addEventListener("click", closeCard);
+
+  if (closeBehavior === "mouseleave") {
+    card?.addEventListener("mouseleave", closeCard);
+  }
 
   const speakButton = shadow.querySelector("[data-action='speak']");
   speakButton?.addEventListener("click", () => playSpeech(model.data?.pronunciationText || model.data?.translation));
