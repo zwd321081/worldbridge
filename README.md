@@ -52,6 +52,17 @@ WordBridge 是一个 Manifest V3 Chrome 扩展。选中网页文字后，它会�
 - `options.css`: 设置页样式
 - `options.js`: 设置保存和接口测试
 
+### Chrome 商店发布
+
+发布资料已整理在 `store/` 目录：
+
+- `store/listing.zh.md`: 中文商店文案
+- `store/listing.en.md`: 英文商店文案
+- `store/privacy-policy.md`: 隐私政策
+- `store/review-notes.md`: 审核说明
+- `store/featured-application.md`: Featured Badge 申请草稿
+- `store/publish-checklist.md`: 发布检查清单
+
 ### 注意
 
 API Key 和接口配置保存在 Chrome 扩展的同步存储 `chrome.storage.sync` 中，不会写入本项目文件。翻译缓存保存在 `chrome.storage.local`，仅保留最近查询结果，默认 10 分钟过期，最多 300 条。若 Chrome 开启账号同步，接口配置可能同步到同一账号的其他 Chrome 浏览器。适合个人使用，不要把带有真实 Key 的浏览器配置或打包扩展分享给别人。
@@ -103,6 +114,17 @@ For another OpenAI-compatible provider, set `API Base URL` to that provider's Op
 - `options.html`: Settings page
 - `options.css`: Settings page styles
 - `options.js`: Settings persistence and API testing
+
+### Chrome Web Store Publishing
+
+Publishing materials are available in the `store/` directory:
+
+- `store/listing.zh.md`: Chinese store listing copy
+- `store/listing.en.md`: English store listing copy
+- `store/privacy-policy.md`: Privacy policy
+- `store/review-notes.md`: Review notes
+- `store/featured-application.md`: Featured Badge nomination draft
+- `store/publish-checklist.md`: Publishing checklist
 
 ### Security Note
 

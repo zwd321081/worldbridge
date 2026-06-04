@@ -4,8 +4,7 @@
   "description": "Select text on any page and translate or explain it with IPA, examples, synonyms, and speech.",
   "version": "1.0.5",
   "permissions": [
-    "storage",
-    "activeTab"
+    "storage"
   ],
   "host_permissions": [
     "<all_urls>"
